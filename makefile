@@ -2,6 +2,10 @@ OBJECTS= main.o draw.o display.o
 CFLAGS= -Wall
 CC= gcc
 
+
+run: main
+	./main
+
 main: $(OBJECTS)
 	$(CC) -o main $(OBJECTS)
 
@@ -14,8 +18,5 @@ draw.o: draw.c draw.h display.h ml6.h
 display.o: display.c display.h ml6.h
 	$(CC) $(CFLAGS) -c display.c
 
-run: main
-	./main
-
 clean:
-	rm *.o *~
+	rm *.o *~ main
