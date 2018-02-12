@@ -81,14 +81,13 @@ void draw_line(int x0, int y0, int x1, int y1, screen s, color c) {
     }
     int a = y1 - y0;//a is delta y
     int b = x0 - x1;//b is -delta x
-    float m = a/((float)-b);//slope of line = delta y / delta x
-    if(m > 1){ //if the slope is within octant 2
+    if(a >= -1*b && a > 0){ //if the slope is within octant 2
         draw_oct2(x0, y0, x1, y1, s, c, a, b);
     }
-    else if(m <= 1 && m > 0){//if the slope is within octant 1
+    else if(a < -1*b && a >= 0){//if the slope is within octant 1
         draw_oct1(x0, y0, x1, y1, s, c, a, b);
     }
-    else if(m <= 0 && m > -1){//if the slope is within octant 8
+    else if(-1*a < -1*b && a < 0){//if the slope is within octant 8
         draw_oct8(x0, y0, x1, y1, s, c, a, b);
     }
     else{//if the slope is within octant 7
